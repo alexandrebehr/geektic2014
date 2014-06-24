@@ -5,3 +5,9 @@ app.controller('HelloCtrl', function($scope, $http) {
         $scope.helloMessage = helloMessage;
     });
 });
+
+app.config(['$routeProvider',function($routeProvider) {
+    $routeProvider.when('/', {
+    	templateUrl : 'mainForm.html',
+    });
+}]);

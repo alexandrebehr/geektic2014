@@ -10,3 +10,40 @@ h1
 	color:white;
 	font-size: 45px;
 }
+
+h3
+{
+	color:white;
+	font-family:"palatino linotype", palatino, serif;
+	text-align:center;
+	font-size:30px;
+}
+
+.contenu {
+	margin-top: 200px;
+	font-size: larger;
+}
+
+.btnRecherche{
+	border-radius : 10px;
+	background-color: white;
+	font-family:"palatino linotype", palatino, serif;
+	border-color: white;
+	font-weight: bold;
+}
+
+.btnRecherche:hover {
+	background-color: transparent;
+	color : white;
+}
+
+.formRecherche {
+	background-color:transparent;
+	color: white;
+	font-weight:bold;
+	font-family:"palatino linotype", palatino, serif;
+	border-radius:10px;
+	border-width: thin;
+	height: 25px;
+	font-size: large;
+}
