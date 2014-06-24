@@ -24,8 +24,8 @@ public class GeekService {
 	private GeekDao geekDao;
 	
 	public GeekService() {
-		geekDao = new GeekDaoImpl(em);
 		em = Persistence.createEntityManagerFactory("GEEKTIC").createEntityManager();
+		geekDao = new GeekDaoImpl(em);
 	}
 	
 	@RequestMapping(method = RequestMethod.GET, value = "/{sexe}/{interets}")
@@ -36,5 +36,4 @@ public class GeekService {
 		criteres.setCentresInterets(interets);
 		return geekDao.searchByCriteria(criteres);
 	}
-
 }

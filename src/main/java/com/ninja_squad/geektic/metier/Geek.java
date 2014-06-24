@@ -22,12 +22,22 @@ public class Geek {
 	@Column(name="ID")
 	private Long identifiant;
 	
-	
+	@Column(name = "SEXE")
 	private String sexe;
+	
+	@Column(name = "NOM")
 	private String nom;
+	
+	@Column(name = "PRENOM")
 	private String prenom;
+	
+	@Column(name = "MAIL")
 	private String mail;
+	
+	@Column(name = "INTERETS")
 	private String interets;
+	
+	public Geek() {}
 	
 	public Geek(Long id, String sexe, String nom, String prenom, String mail, String interets) {
 		this.identifiant = id;

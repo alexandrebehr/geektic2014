@@ -17,13 +17,19 @@ public class CriteresRechercheGeek {
 		return sexe;
 	}
 	public void setSexe(String sexe) {
-		this.sexe = sexe;
+		if(sexe.trim() != "")
+			this.sexe = sexe;
+		else
+			sexe = null;
 	}
 	public String getCentresInterets() {
 		return centresInterets;
 	}
 	public void setCentresInterets(String centresInterets) {
-		this.centresInterets = centresInterets;
+		if(centresInterets.trim() != "")
+			this.centresInterets = centresInterets;
+		else
+			centresInterets = null;
 	}
 	
 	

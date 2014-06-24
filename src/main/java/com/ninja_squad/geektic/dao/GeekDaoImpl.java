@@ -20,9 +20,30 @@ public class GeekDaoImpl extends GeekDao{
 
 	@Override
 	public List<Geek> searchByCriteria(CriteresRechercheGeek criteres) {
-		String jpql = "select * from GEEK";
+		String jpql = "select g from Geek g";
+		jpql = addParameters(jpql, criteres);
 		TypedQuery<Geek> query = entityManager.createQuery(jpql, Geek.class);
 		return query.getResultList();
+	}
+	
+	private String addParameters(String jpql, CriteresRechercheGeek criteres) {
+		boolean criteriaFound = false;
+		String sexe = criteres.getSexe();
+		String interets = criteres.getCentresInterets();
+		if(sexe != null)
+		{
+			criteriaFound = true;
+			jpql += " where sexe = '"+ sexe + "'";
+		}
+		if(interets != null) {
+			if(criteriaFound) {
+				jpql += " and interets LIKE '%" + interets + "%'";
+			} else {
+				jpql += " where interets LIKE '%" + interets + "%'";
+			}
+		}
+		
+		return jpql;
 	}
 
 }

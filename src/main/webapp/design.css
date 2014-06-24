@@ -1,0 +1,12 @@
+body 
+{
+	background-image: url("images/geek.png");
+}
+
+h1
+{
+	font-family:"palatino linotype", palatino, serif;
+	text-align: center;
+	color:white;
+	font-size: 45px;
+}
