@@ -12,6 +12,9 @@ app.config(['$routeProvider',function($routeProvider) {
     }).when('/geek/:sexe/:interets', {
     	templateUrl : 'resultForm.html',
     	controller : 'SearchCtrl'
+    }).when('/geek/:id', {
+    	templateUrl : 'detailGeek.html',
+    	controller : 'ShowDetailCtrl'
     });
 }]);
 
@@ -21,5 +24,14 @@ app.controller('SearchCtrl', function($scope, $http, $routeParams) {
 		method: 'GET'
 	}).success(function(geeksRecherches) {
     	$scope.geeks = geeksRecherches;
+    });	
+})
+
+app.controller('ShowDetailCtrl', function($scope, $http, $routeParams) {
+	$http({
+		url: '/geek/' +$routeParams.id,
+		method: 'GET'
+	}).success(function(geekToShow) {
+    	$scope.geek = geekToShow;
     });	
 })

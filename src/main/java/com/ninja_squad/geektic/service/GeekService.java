@@ -76,7 +76,7 @@ public class GeekService {
 	 * @return le geek trouvé
 	 */
 	@RequestMapping(method = RequestMethod.GET, value= "/{id}")
-	private Geek findById(@PathVariable("id") String id) {
-		return geekDao.findById(Long.getLong(id));
+	public Geek findById(@PathVariable("id") String id) {
+		return geekDao.findById(Long.decode(id));
 	}
 }
