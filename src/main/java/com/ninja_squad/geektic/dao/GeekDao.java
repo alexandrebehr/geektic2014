@@ -3,19 +3,25 @@ package com.ninja_squad.geektic.dao;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
-import com.ninja_squad.geektic.metier.CriteresRechercheGeek;
+import org.springframework.stereotype.Repository;
+
 import com.ninja_squad.geektic.metier.Geek;
 
-public abstract class GeekDao {
+@Repository
+public class GeekDao {
+	@PersistenceContext
 	protected EntityManager entityManager;
-	
-	public GeekDao(EntityManager em)
-	{
-		entityManager = em;
+
+	public List<Geek> getAllGeeks() {
+		String jpql = "select g from Geek g";
+		TypedQuery<Geek> query = entityManager.createQuery(jpql, Geek.class);
+		return query.getResultList();
 	}
 	
-	public GeekDao(){}
-	
-	public abstract List<Geek> searchByCriteria(CriteresRechercheGeek criteres);
+	public Geek findById(Long id) {
+		return entityManager.find(Geek.class, id);
+	}
 }
