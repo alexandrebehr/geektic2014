@@ -15,6 +15,12 @@ import com.ninja_squad.geektic.dao.GeekDao;
 import com.ninja_squad.geektic.metier.CriteresRechercheGeek;
 import com.ninja_squad.geektic.metier.Geek;
 
+/**
+ * Services va appeler le DAO pour récupérer les Geeks
+ * 
+ * @author p1312005
+ *
+ */
 @RestController
 @Transactional
 @RequestMapping("/geek")
@@ -22,6 +28,14 @@ public class GeekService {
 	@Autowired
 	private GeekDao geekDao;
 
+	/**
+	 * 
+	 * @param sexe
+	 * 				sexe des geeks à rechercher
+	 * @param interets
+	 * 				centres d'intérêtes des geeks à rechercher
+	 * @return la liste des geeks correspondant
+	 */
 	@RequestMapping(method = RequestMethod.GET, value = "/{sexe}/{interets}")
 	public List<Geek> getGeeksFromCriteria(@PathVariable("sexe") String sexe,
 			@PathVariable("interets") String interets) {
@@ -32,6 +46,16 @@ public class GeekService {
 		return findGeeksByCriterias(criteres, geeks);
 	}
 	
+	/**
+	 * Permet de faire le tri des geeks trouvés en fonction 
+	 * des critères de recherche.
+	 * Le tri n'est pas fait directement depuis la requête à la base
+	 * pour gérer la casse 
+	 * 
+	 * @param criteres
+	 * @param geeks
+	 * @return
+	 */
 	private List<Geek> findGeeksByCriterias(CriteresRechercheGeek criteres, List<Geek> geeks) {
 		List<Geek> geeksToReturn = new ArrayList<>();
 		for (Geek geek : geeks) {
@@ -42,5 +66,17 @@ public class GeekService {
 			}
 		}
 		return geeksToReturn;
+	}
+	
+	/**
+	 * Permet de trouver un geek avec son identifiant
+	 * 
+	 * @param id
+	 * 			identifiant du geek
+	 * @return le geek trouvé
+	 */
+	@RequestMapping(method = RequestMethod.GET, value= "/{id}")
+	private Geek findById(@PathVariable("id") String id) {
+		return geekDao.findById(Long.getLong(id));
 	}
 }

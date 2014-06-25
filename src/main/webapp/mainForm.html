@@ -1,10 +1,10 @@
-<html>
+
 <h3>Recherchez l'amour...</h3>
 <table>
 	<tr>
 		<td>Sexe</td>
-		<td><input type="radio" ng-model="sex" value="homme">Homme<br />
-			<input type="radio" ng-model="sex" value="femme">Femme</td>
+		<td><input type="radio" ng-model="sexe" value="homme">Homme<br />
+			<input type="radio" ng-model="sexe" value="femme">Femme</td>
 	</tr>
 	<tr>
 		<td>Centres d'interet</td>
@@ -13,8 +13,7 @@
 	</tr>
 	<tr>
 		<td></td>
-		<td><a href="/geek/{{sex}}/{{interet}}"><button
+		<td><a href="#/geek/{{sexe}}/{{interet}}"><button
 					class="btnRecherche">Rechercher</button> </a></td>
 	</tr>
 </table>
-</html>
